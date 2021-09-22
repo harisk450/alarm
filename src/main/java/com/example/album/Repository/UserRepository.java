@@ -1,10 +1,11 @@
-package com.example.albumfull.Repository;
+package com.example.album.Repository;
 
-import com.example.albumfull.model.User;
+import com.example.album.model.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class UserRepository {
     public User getUser(){
         User user = new User(123,"Haris","harisk45@gmail.com","https://images.app.goo.gl/XVLk91mPgUJG9FY96");

@@ -1,8 +1,8 @@
-package com.example.albumfull.Service;
+package com.example.album.Service;
 
 
-import com.example.albumfull.Repository.CommentRepository;
-import com.example.albumfull.model.Comment;
+import com.example.album.Repository.CommentRepository;
+import com.example.album.model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

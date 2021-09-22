@@ -1,8 +1,8 @@
-package com.example.albumfull.Service;
+package com.example.album.Service;
 
-import com.example.albumfull.Repository.PhotoRepository;
+import com.example.album.Repository.PhotoRepository;
 
-import com.example.albumfull.model.Photo;
+import com.example.album.model.Photo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

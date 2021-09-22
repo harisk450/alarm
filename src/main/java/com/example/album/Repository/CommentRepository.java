@@ -1,13 +1,13 @@
-package com.example.albumfull.Repository;
+package com.example.album.Repository;
 
-import com.example.albumfull.model.Comment;
-
+import com.example.album.model.Comment;
+import org.springframework.stereotype.Repository;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Repository
 public class CommentRepository {
     public Comment getComment() {
         Comment comment = new Comment(12, 33432, "Nice pic0", "Linda", "12 April");

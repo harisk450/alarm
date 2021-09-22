@@ -1,8 +1,8 @@
-package com.example.albumfull.Resource;
+package com.example.album.Resource;
 
 
-import com.example.albumfull.Service.UserService;
-import com.example.albumfull.model.User;
+import com.example.album.Service.UserService;
+import com.example.album.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

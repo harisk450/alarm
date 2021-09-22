@@ -1,13 +1,14 @@
-package com.example.albumfull.Repository;
+package com.example.album.Repository;
 
-import com.example.albumfull.model.Photo;
+import com.example.album.model.Photo;
+import org.springframework.stereotype.Repository;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.albumfull.Repository.UserRepository.userList;
-
+import static com.example.album.Repository.UserRepository.userList;
+@Repository
 public class PhotoRepository {
     public static Photo getPhoto(){
         Photo photo = new Photo(123,1234,"https://images.app.goo.gl/XVLk91mPgUJG9FY96","Haris ","12,April,2021");

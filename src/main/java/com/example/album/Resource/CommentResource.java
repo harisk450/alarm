@@ -1,7 +1,7 @@
-package com.example.albumfull.Resource;
+package com.example.album.Resource;
 
-import com.example.albumfull.Service.CommentService;
-import com.example.albumfull.model.Comment;
+import com.example.album.Service.CommentService;
+import com.example.album.model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

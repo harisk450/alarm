@@ -1,14 +1,17 @@
-package com.example.albumfull.model;
+package com.example.album.model;
+
+import org.springframework.data.annotation.Id;
 
 public class Album {
 
-    private int albumId;
+    @Id
+    private String albumId;
     private String name;
     private String coverPicUrl;
     private String createdBy;
     private String dateCreated;
 
-    public Album(int albumId, String name, String coverPicUrl, String createdBy, String dateCreated) {
+    public Album(String albumId, String name, String coverPicUrl, String createdBy, String dateCreated) {
         this.albumId = albumId;
         this.name = name;
         this.coverPicUrl = coverPicUrl;
@@ -16,11 +19,11 @@ public class Album {
         this.dateCreated = dateCreated;
     }
 
-    public int getAlbumId() {
+    public String getAlbumId() {
         return albumId;
     }
 
-    public void setAlbumId(int albumId) {
+    public void setAlbumId(String albumId) {
         this.albumId = albumId;
     }
 

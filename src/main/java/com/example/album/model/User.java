@@ -1,4 +1,4 @@
-package com.example.albumfull.model;
+package com.example.album.model;
 
 public class User {
     private int id;

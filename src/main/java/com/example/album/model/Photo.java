@@ -1,16 +1,16 @@
-package com.example.albumfull.model;
+package com.example.album.model;
 
-public class Comment {
+public class Photo {
     private int id;
-    private int photoId;
-    private String message;
+    private int albumId;
+    private String photoUrl;
     private String createdBy;
     private String dateCreated;
 
-    public Comment(int id, int photoId, String message, String createdBy, String dateCreated) {
+    public Photo(int id, int albumId, String photoUrl, String createdBy, String dateCreated) {
         this.id = id;
-        this.photoId = photoId;
-        this.message = message;
+        this.albumId = albumId;
+        this.photoUrl = photoUrl;
         this.createdBy = createdBy;
         this.dateCreated = dateCreated;
     }
@@ -23,20 +23,20 @@ public class Comment {
         this.id = id;
     }
 
-    public int getPhotoId() {
-        return photoId;
+    public int getAlbumId() {
+        return albumId;
     }
 
-    public void setPhotoId(int photoId) {
-        this.photoId = photoId;
+    public void setAlbumId(int albumId) {
+        this.albumId = albumId;
     }
 
-    public String getMessage() {
-        return message;
+    public String getPhotoUrl() {
+        return photoUrl;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
     public String getCreatedBy() {
