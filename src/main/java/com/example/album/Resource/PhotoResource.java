@@ -1,47 +1,40 @@
 package com.example.album.Resource;
 
-
 import com.example.album.Service.PhotoService;
 import com.example.album.model.Photo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/photos")
 public class PhotoResource {
     @Autowired
-    private PhotoService albumService;
+    private PhotoService photoService;
 
-    @GetMapping("/photo")
-    public Photo getPhoto(){
-        return albumService.getPhoto();
+    @PostMapping
+    public Photo savePhoto(@RequestBody Photo photo){
+        return photoService.savePhoto(photo);
     }
 
-    @GetMapping("/photos")
-    public List<Photo> getAllAlbums(){
-        return albumService.getAllPhotos();
+    @GetMapping
+    public List<Photo> getAllPhotos(){
+        return photoService.getAllPhotos();
     }
 
-    @GetMapping("/photo/{Id}")
-    public Photo getPhotoById(@PathVariable("Id") int Id){
-        return albumService.getPhotoById(Id);
+    @PutMapping
+    public Photo updatePhoto(@RequestBody Photo photo){
+        return photoService.updatePhoto(photo);
     }
 
-    @PutMapping("/photo/{Id}")
-    public Photo UpdatePhoto(@PathVariable("Id") int Id,@RequestBody Photo album){
-        return albumService.updatePhoto(Id,album);
+    @DeleteMapping
+    public void deletePhoto(@RequestParam(name = "id") String id){
+        photoService.deletePhoto(id);
     }
 
-    @PostMapping("/photo")
-    public Photo savePhoto(@RequestBody Photo album){
-        albumService.savePhoto(album);
-        return album;
+    @GetMapping
+    public List<Photo> getPhotoByCreator(@RequestParam(name = "createdBy") String createdBy){
+        return photoService.getPhotoByCreator(createdBy);
     }
-
-    @DeleteMapping("/photo")
-    public Photo deletePhoto(@RequestParam(name = "Id") int Id){
-        return albumService.deletePhoto(Id);
-    }
-
 }

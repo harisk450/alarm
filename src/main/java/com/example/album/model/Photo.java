@@ -1,13 +1,16 @@
 package com.example.album.model;
 
+import org.springframework.data.annotation.Id;
+
 public class Photo {
-    private int id;
+    @Id
+    private String id;
     private int albumId;
     private String photoUrl;
     private String createdBy;
     private String dateCreated;
 
-    public Photo(int id, int albumId, String photoUrl, String createdBy, String dateCreated) {
+    public Photo(String id, int albumId, String photoUrl, String createdBy, String dateCreated) {
         this.id = id;
         this.albumId = albumId;
         this.photoUrl = photoUrl;
@@ -15,11 +18,11 @@ public class Photo {
         this.dateCreated = dateCreated;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

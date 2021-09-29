@@ -8,40 +8,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/comments")
 public class CommentResource {
     @Autowired
-    private CommentService albumService;
+    private CommentService commentService;
 
-    @GetMapping("/comment")
-    public Comment getComment(){
-        return albumService.getComment();
+    @PostMapping
+    public Comment saveComment(@RequestBody Comment comment){
+        return commentService.saveComment(comment);
     }
 
-    @GetMapping("/comments")
+    @GetMapping
     public List<Comment> getAllComments(){
-        return albumService.getAllComments();
+        return  commentService.getAllComments();
     }
 
-    @GetMapping("/comment/{Id}")
-    public Comment getCommentById(@PathVariable("Id") int Id){
-        return albumService.getCommentById(Id);
+    @PutMapping
+    public Comment updateComment(@RequestBody Comment comment){
+        return commentService.updateCommnet(comment);
     }
 
-    @PutMapping("/comment/{Id}")
-    public Comment UpdateComment(@PathVariable("Id") int Id,@RequestBody Comment album){
-        return albumService.updateComment(Id,album);
+    @DeleteMapping
+    public void deleteComment(@RequestParam(name = "id") String id){
+        commentService.deleteComment(id);
     }
 
-    @PostMapping("/comment")
-    public Comment saveComment(@RequestBody Comment album){
-        albumService.saveComment(album);
-        return album;
-    }
-
-    @DeleteMapping("/comment")
-    public Comment deleteComment(@RequestParam(name = "Id") int Id){
-        return albumService.deleteComment(Id);
+    @GetMapping
+    public List<Comment> getCommentByCreator(@RequestParam(name = "createdBy") String createdBy){
+        return commentService.getCommentByCreator(createdBy);
     }
 
 }

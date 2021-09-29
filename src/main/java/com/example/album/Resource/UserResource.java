@@ -1,6 +1,5 @@
 package com.example.album.Resource;
 
-
 import com.example.album.Service.UserService;
 import com.example.album.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,39 +8,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 public class UserResource {
     @Autowired
-    private UserService albumService;
+    private UserService userService;
 
-    @GetMapping("/user")
-    public User getAlbum(){
-        return albumService.getUser() ;   }
+    @PostMapping
+    public User saveUser(@RequestBody User user){
+        return userService.saveUser(user);
+    }
 
-    @GetMapping("/users")
+    @GetMapping
     public List<User> getAllUsers(){
-        return albumService.getAllUsers();
+        return userService.getAllUsers();
     }
 
-    @GetMapping("/user/{Id}")
-    public User getAlbumById(@PathVariable("Id") int Id){
-        return albumService.getUserById(Id);
+    @PutMapping
+    public User updateUser(@RequestBody User user){
+        return userService.updateUser(user);
     }
 
-    @PutMapping("/user/{Id}")
-    public User UpdateAlbum(@PathVariable("Id") int Id,@RequestBody User album){
-        return albumService.updateUser(Id,album);
+    @DeleteMapping
+    public void deleteUser(@RequestParam(name = "id") String id){
+        userService.deleteUser(id);
     }
 
-    @PostMapping("/user")
-    public User saveAlbum(@RequestBody User album){
-        albumService.saveUser(album);
-        return album;
+    @GetMapping
+    public List<User> getUserByName(@RequestParam(name = "name") String name){
+        return userService.getUserByName(name);
     }
-
-    @DeleteMapping("/user")
-    public User deleteAlbum(@RequestParam(name = "albumId") int Id){
-        return albumService.deleteUser(Id);
-    }
-
 }

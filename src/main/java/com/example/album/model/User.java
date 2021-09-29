@@ -1,23 +1,26 @@
 package com.example.album.model;
 
+import org.springframework.data.annotation.Id;
+
 public class User {
-    private int id;
+    @Id
+    private String id;
     private String name;
     private String email;
     private String profilePhotoUrl;
 
-    public User(int id, String name, String email, String profilePhotoUrl) {
+    public User(String id, String name, String email, String profilePhotoUrl) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.profilePhotoUrl = profilePhotoUrl;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

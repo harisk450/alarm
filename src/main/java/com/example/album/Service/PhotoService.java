@@ -1,38 +1,35 @@
 package com.example.album.Service;
 
 import com.example.album.Repository.PhotoRepository;
-
 import com.example.album.model.Photo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class PhotoService {
     @Autowired
-    private static PhotoRepository photoRepository;
+    private PhotoRepository photoRepository;
 
-    public static Photo savePhoto(Photo album) {
-        return photoRepository.savePhoto(album);
-    }
-
-    public Photo getPhoto(){
-        return photoRepository.getPhoto();
+    public Photo savePhoto(Photo photo) {
+        return photoRepository.save(photo);
     }
 
     public List<Photo> getAllPhotos() {
-        return photoRepository.getAllPhotos();
+        return photoRepository.findAll();
     }
 
-    public Photo getPhotoById(int Id) {
-        return photoRepository.getPhotobyId(Id);
+    public Photo updatePhoto(Photo photo) {
+        return photoRepository.save(photo);
     }
 
-    public Photo updatePhoto(int Id, Photo album) {
-        return photoRepository.updatePhoto(Id,album);
+
+    public void deletePhoto(String id) {
+        photoRepository.deleteById(id);
     }
 
-    public Photo deletePhoto(int Id) {
-        return photoRepository.deletePhoto(Id);
+    public List<Photo> getPhotoByCreator(String createdBy) {
+        return photoRepository.findByCreator(createdBy);
     }
 }

@@ -16,8 +16,7 @@ public class AlbumResource {
 
     @PostMapping
     public Album saveAlbum(@RequestBody Album album){
-        AlbumService.saveAlbum(album);
-        return album;
+        return albumService.saveAlbum(album);
     }
 
     @GetMapping
@@ -30,31 +29,13 @@ public class AlbumResource {
         return albumService.updateAlbum(album);
     }
 
-
     @DeleteMapping
     public void deleteAlbum(@RequestParam(name = "albumId") String albumId){
-         albumService.deleteAlbum(albumId);
+        albumService.deleteAlbum(albumId);
     }
 
-    @GetMapping("/album/{albumId}")
+    @GetMapping
     public List<Album> getAlbumByCreator(@RequestParam(name = "createdBy") String createdBy){
-        return albumService.getAlbumById(createdBy);
+        return albumService.getAlbumByCreator(createdBy);
     }
-
-    /*
-    @GetMapping("/album")
-    public Album getAlbum(){
-        return albumService.getAlbum();
-    }
-
-
-
-
-
-
-
-
-
-     */
-
 }
