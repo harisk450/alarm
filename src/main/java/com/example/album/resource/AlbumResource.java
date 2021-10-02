@@ -1,41 +1,47 @@
-package com.example.album.Resource;
+package com.example.album.resource;
 
-import com.example.album.Service.AlbumService;
+
 import com.example.album.model.Album;
+import com.example.album.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequestMapping("/api")
 @RestController
-@RequestMapping("/api/albums")
 public class AlbumResource {
 
     @Autowired
     private AlbumService albumService;
 
-    @PostMapping
+    @PostMapping("/album")
     public Album saveAlbum(@RequestBody Album album){
         return albumService.saveAlbum(album);
     }
 
-    @GetMapping
+
+
+    @GetMapping("/albums")
     public List<Album> getAllAlbums(){
         return albumService.getAllAlbums();
     }
 
-    @PutMapping
+    @GetMapping("/album/{albumName}")
+    public List<Album> getAlbumByName(@RequestParam(name = "name") String name){
+        return albumService.getAlbumByName(name);
+    }
+
+    @PutMapping("/album/{albumId}")
     public Album updateAlbum(@RequestBody Album album){
         return albumService.updateAlbum(album);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/album")
     public void deleteAlbum(@RequestParam(name = "albumId") String albumId){
         albumService.deleteAlbum(albumId);
+
     }
 
-    @GetMapping
-    public List<Album> getAlbumByCreator(@RequestParam(name = "createdBy") String createdBy){
-        return albumService.getAlbumByCreator(createdBy);
-    }
 }
+

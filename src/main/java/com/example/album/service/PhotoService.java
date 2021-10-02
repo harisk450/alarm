@@ -1,7 +1,7 @@
-package com.example.album.Service;
+package com.example.album.service;
 
-import com.example.album.Repository.PhotoRepository;
 import com.example.album.model.Photo;
+import com.example.album.repository.PhotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,20 +16,20 @@ public class PhotoService {
         return photoRepository.save(photo);
     }
 
+
     public List<Photo> getAllPhotos() {
         return photoRepository.findAll();
+    }
+
+    public List<Photo> getUserByCreator(String createdBy) {
+        return photoRepository.findAllByCreator(createdBy);
     }
 
     public Photo updatePhoto(Photo photo) {
         return photoRepository.save(photo);
     }
 
-
     public void deletePhoto(String id) {
         photoRepository.deleteById(id);
-    }
-
-    public List<Photo> getPhotoByCreator(String createdBy) {
-        return photoRepository.findByCreator(createdBy);
     }
 }

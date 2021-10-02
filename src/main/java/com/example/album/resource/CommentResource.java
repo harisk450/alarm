@@ -1,41 +1,42 @@
-package com.example.album.Resource;
+package com.example.album.resource;
 
-import com.example.album.Service.CommentService;
 import com.example.album.model.Comment;
+
+import com.example.album.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/comments")
+@RequestMapping("/api")
 public class CommentResource {
     @Autowired
     private CommentService commentService;
 
-    @PostMapping
+    @PostMapping("/comment")
     public Comment saveComment(@RequestBody Comment comment){
         return commentService.saveComment(comment);
     }
 
-    @GetMapping
+    @GetMapping("/comments")
     public List<Comment> getAllComments(){
-        return  commentService.getAllComments();
+        return commentService.getAllComments();
     }
 
-    @PutMapping
-    public Comment updateComment(@RequestBody Comment comment){
-        return commentService.updateCommnet(comment);
-    }
-
-    @DeleteMapping
-    public void deleteComment(@RequestParam(name = "id") String id){
-        commentService.deleteComment(id);
-    }
-
-    @GetMapping
+    @GetMapping("/comment/{createdBy}")
     public List<Comment> getCommentByCreator(@RequestParam(name = "createdBy") String createdBy){
         return commentService.getCommentByCreator(createdBy);
     }
 
+    @PutMapping("/comment/{id}")
+    public Comment updateComment(@RequestBody Comment comment){
+        return commentService.updateComment(comment);
+    }
+
+    @DeleteMapping("/comment")
+    public void deleteComment(@RequestParam(name = "id") String id){
+        commentService.deleteComment(id);
+
+    }
 }

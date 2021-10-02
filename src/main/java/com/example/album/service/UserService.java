@@ -1,8 +1,7 @@
-package com.example.album.Service;
+package com.example.album.service;
 
-
-import com.example.album.Repository.UserRepository;
 import com.example.album.model.User;
+import com.example.album.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,17 +9,20 @@ import java.util.List;
 
 @Service
 public class UserService {
+
     @Autowired
     private UserRepository userRepository;
-
 
     public User saveUser(User user) {
         return userRepository.save(user);
     }
 
-
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public List<User> getUserByName(String name) {
+        return userRepository.findAllByName(name);
     }
 
     public User updateUser(User user) {
@@ -29,9 +31,5 @@ public class UserService {
 
     public void deleteUser(String id) {
         userRepository.deleteById(id);
-    }
-
-    public List<User> getUserByName(String name) {
-        return userRepository.findUserByName(name);
     }
 }
