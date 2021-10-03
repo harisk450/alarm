@@ -1,7 +1,8 @@
 package com.example.album.resource;
 
-import com.example.album.model.Comment;
 
+import com.example.album.model.Comment;
+import com.example.album.model.Photo;
 import com.example.album.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class CommentResource {
+
     @Autowired
     private CommentService commentService;
 
@@ -19,14 +21,15 @@ public class CommentResource {
         return commentService.saveComment(comment);
     }
 
+
     @GetMapping("/comments")
     public List<Comment> getAllComments(){
         return commentService.getAllComments();
     }
 
-    @GetMapping("/comment/{createdBy}")
-    public List<Comment> getCommentByCreator(@RequestParam(name = "createdBy") String createdBy){
-        return commentService.getCommentByCreator(createdBy);
+    @GetMapping("/comment/createdBy")
+    public List<Comment> getCommentByCreator(@RequestParam(name = "craetedBy") String  createdBy){
+        return commentService.getPhotoByCreator(createdBy);
     }
 
     @PutMapping("/comment/{id}")
@@ -35,8 +38,7 @@ public class CommentResource {
     }
 
     @DeleteMapping("/comment")
-    public void deleteComment(@RequestParam(name = "id") String id){
+    public void deleteComment(@RequestParam(name = "Id") String id){
         commentService.deleteComment(id);
-
     }
 }

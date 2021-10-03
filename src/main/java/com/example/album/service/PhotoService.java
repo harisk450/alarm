@@ -21,8 +21,8 @@ public class PhotoService {
         return photoRepository.findAll();
     }
 
-    public List<Photo> getUserByCreator(String createdBy) {
-        return photoRepository.findAllByCreator(createdBy);
+    public List<Photo> getPhotoByCreator(String createdBy) {
+        return photoRepository.findAllByCreatedBy(createdBy);
     }
 
     public Photo updatePhoto(Photo photo) {

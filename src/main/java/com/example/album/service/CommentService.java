@@ -16,20 +16,20 @@ public class CommentService {
         return commentRepository.save(comment);
     }
 
+    public List<Comment> getAllComments() {
+        return commentRepository.findAll();
+    }
 
-    public void deleteComment(String id) {
-        commentRepository.deleteById(id);
+    public List<Comment> getPhotoByCreator(String createdBy) {
+        return commentRepository.findAllByCreatedBy(createdBy);
     }
 
     public Comment updateComment(Comment comment) {
         return commentRepository.save(comment);
     }
 
-    public List<Comment> getCommentByCreator(String createdBy) {
-        return commentRepository.findAllByCreator(createdBy);
-    }
-
-    public List<Comment> getAllComments() {
-        return commentRepository.findAll();
+    public void deleteComment(String id) {
+        commentRepository.deleteById(id);
     }
 }
+

@@ -1,7 +1,7 @@
 package com.example.album.resource;
 
-
 import com.example.album.model.Photo;
+import com.example.album.model.User;
 import com.example.album.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class PhotoResource {
+
     @Autowired
     private PhotoService photoService;
 
@@ -20,25 +21,23 @@ public class PhotoResource {
     }
 
 
-
     @GetMapping("/photos")
     public List<Photo> getAllPhotos(){
         return photoService.getAllPhotos();
     }
 
-    @GetMapping("/photo/{createdBy}")
-    public List<Photo> getPhotoByCreator(@RequestParam(name = "createdBy") String createdBy){
-        return photoService.getUserByCreator(createdBy);
+    @GetMapping
+    public List<Photo> getPhotoByCreator(@RequestParam(name = "craetedBy") String  createdBy){
+        return photoService.getPhotoByCreator(createdBy);
     }
 
-    @PutMapping("/photo/{id}")
+    @PutMapping("/photo/{photoId}")
     public Photo updatePhoto(@RequestBody Photo photo){
         return photoService.updatePhoto(photo);
     }
 
     @DeleteMapping("/photo")
-    public void deletePhoto(@RequestParam(name = "id") String id){
+    public void deletePhoto(@RequestParam(name = "Id") String id){
         photoService.deletePhoto(id);
-
     }
 }
